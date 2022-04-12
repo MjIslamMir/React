@@ -1,0 +1,294 @@
+import React from 'react';
+import ReactDOM from 'react-dom'
+function Page(){
+    return (
+        <div>
+        <h1>Reasons why i love REACT</h1>
+        <ol>
+        <li>Reason 1</li>
+        <li>Reason 2</li>
+        <li>Reason 3</li>
+        <li>Reason 4</li>
+        </ol>
+        </div>
+        
+    )
+}
+
+ReactDOM.render(<Page/>,document.getElementById('root'));
+
+
+
+
+/**
+Challenge: 
+
+Part 2: 
+- Add a `header` element with a nested `nav` element. Inside the `nav`,
+  include a `img` element with the image of the React logo inside
+  (src="./react-logo.png") and make sure to set the width to something
+  more manageable so it doesn't take up the whole screen
+- Add an `h1` with some text describing the page. (E.g. "Reasons
+  I'm excited to learn React"). Place it above the ordered list.
+- Add a `footer` after the list that says: 
+    "© 20xx <last name here> development. All rights reserved."
+ */
+
+import React from "react"
+import ReactDOM from "react-dom"
+
+function Page() {
+    return (
+        <div>
+        <header>
+        <nav><img src="./react-logo.png" width="50px" height="50px"/>
+        </nav>
+        </header>
+        <h1>"Reasons I'm excited to learn React"</h1>
+        <ol>
+            <li>It's a popular library, so I'll be 
+            able to fit in with the cool kids!</li>
+            <li>I'm more likely to get a job as a developer
+            if I know React</li>
+        </ol>
+        <footer>"© 20xx MjIslam development. All rights reserved."</footer>
+        </div>
+        
+    )
+}
+
+ReactDOM.render(<Page />, document.getElementById("root"))
+
+
+
+/**
+Mini Challenge:
+Move the `header` element from Page into 
+its own component called "Header"
+*/
+
+import React from "react"
+import ReactDOM from "react-dom"
+
+function Header(){
+    return ( <header>
+                <nav>
+                    <img src="./react-logo.png" width="40px" />
+                </nav>
+            </header>)
+}
+function Page() {
+    return (
+        <div>
+            <Header/>
+            <h1>Reasons I'm excited to learn React</h1>
+            <ol>
+                <li>It's a popular library, so I'll be 
+                able to fit in with the cool kids!</li>
+                <li>I'm more likely to get a job as a developer
+                if I know React</li>
+            </ol>
+            <footer>
+                <small>© 2021 Ziroll development. All rights reserved.</small>
+            </footer>
+        </div>
+    )
+}
+ReactDOM.render(<Page />, document.getElementById("root"));
+
+
+/**
+Challenge: 
+
+- Move the `footer` into its own component called "Footer" 
+  and render that component inside the Page component.
+- Move the `h1` and `ol` together into another component
+  called "MainContent" and render inside Page as well.
+*/
+
+function Header() {
+    return (
+        <header>
+            <nav>
+                <img src="./react-logo.png" width="40px" />
+            </nav>
+        </header>
+    )
+}
+function Main(){
+    return (
+        <>
+         <h1>Reasons I'm excited to learn React</h1>
+            <ol>
+                <li>It's a popular library, so I'll be 
+                able to fit in with the cool kids!</li>
+                <li>I'm more likely to get a job as a developer
+                if I know React</li>
+            </ol>
+        </>
+    )
+}
+
+function Footer(){
+    return(
+        <footer>
+                <small>© 2021 Ziroll development. All rights reserved.</small>
+        </footer>
+    )
+}
+function Page() {
+    return (
+        <div>
+            <Header />
+           <Main/>
+            <Footer/>
+        </div>
+    )
+}
+
+ReactDOM.render(<Page />, document.getElementById("root"))
+
+
+
+
+
+import React from "react"
+
+export default function Card(props) {
+    let ima="../images/";
+    return (
+        <div className="card">
+            <img src={ima+porps.img} className="card--image" />
+            <div className="card--stats">
+                <img src="../images/star.png" className="card--star" />
+                <span>{parseFloat(props.rating)}</span>
+                <span className="gray">{parseInt(props.reviewCount)} </span>
+                <span className="gray">{props.country}</span>
+            </div>
+            <p>{prps.title}</p>
+            <p><span className="bold">From ${parseInt(props.price)}</span> / person</p>
+        </div>
+    )
+}
+
+export default function App() {
+            // <Hero />
+    return (
+        <div>
+            <Navbar />
+            <Card 
+            img="katie-zaferes.png"
+            rating="5.0"
+            reviewCount="6"
+            country="Whatever you want"
+            title="Life Lessons with Katie Zaferes"
+            price="136"/>
+        </div>
+    )
+}
+
+
+/*
+Challenge 1:
+Given an array of numbers, return an array of each number, squared
+*/
+const nums = [1, 2, 3, 4, 5]
+// -->       [1, 4, 9, 16, 25]
+// Your code here
+let newNums=nums.map(x=> x*x)
+console.log(newNums);
+
+
+
+/*
+Challenge 2:
+Given an array of strings, return an array where 
+the first letter of each string is capitalized
+*/
+
+const names = ["alice", "bob", "charlie", "danielle"]
+// -->        ["Alice", "Bob", "Charlie", "Danielle"]
+// Your code here
+let newNames = names.map(name=>name.charAt(0).toUpperCase() + name.substring(1).toLowerCase());
+console.log(newNames);
+
+
+
+/*
+Challenge 3:
+Given an array of strings, return an array of strings that wraps each
+of the original strings in an HTML-like <p></p> tag.
+
+E.g. given: ["Bulbasaur", "Charmander", "Squirtle"]
+return: ["<p>Bulbasaur</p>", "<p>Charmander</p>", "<p>Squirtle</p>"]
+*/
+
+const pokemon = ["Bulbasaur", "Charmander", "Squirtle"]
+// -->          ["<p>Bulbasaur</p>", "<p>Charmander</p>", "<p>Squirtle</p>"]
+// Your code here
+let headerOpen="<p>";
+let headerClose="</p>";
+let wrappedText= pokemon.map(name=> headerOpen.concat(name,headerClose));
+console.log(wrappedText);
+
+
+
+/*
+Challenge 1:
+Given an array of numbers, return an array of each number, squared
+*/
+const nums = [1, 2, 3, 4, 5]
+// -->       [1, 4, 9, 16, 25]
+// Your code here
+const squares = nums.map(function(num) {
+    return num * num
+})
+
+// console.log(squares)
+
+
+
+/*
+Challenge 2:
+Given an array of strings, return an array where 
+the first letter of each string is capitalized
+*/
+
+const names = ["alice", "bob", "charlie", "danielle"]
+// -->        ["Alice", "Bob", "Charlie", "Danielle"]
+// Your code here
+const capitalized = names.map((name) => {
+    return name[0].toUpperCase() + name.slice(1)
+})
+
+// console.log(capitalized)
+
+
+
+/*
+Challenge 3:
+Given an array of strings, return an array of strings that wraps each
+of the original strings in an HTML-like <p></p> tag.
+
+E.g. given: ["Bulbasaur", "Charmander", "Squirtle"]
+return: ["<p>Bulbasaur</p>", "<p>Charmander</p>", "<p>Squirtle</p>"]
+*/
+
+const pokemon = ["Bulbasaur", "Charmander", "Squirtle"]
+// -->          ["<p>Bulbasaur</p>", "<p>Charmander</p>", "<p>Squirtle</p>"]
+// Your code here
+
+const paragraphs = pokemon.map((mon) => {
+    return `<p>${mon}</p>`
+})
+
+
+export default function App() {
+    const colors = ["Red", "Orange", "Yellow", "Green", "Blue", "Indigo", "Violet"]
+    return (
+        <div>
+            {colors}
+            {colors.map(x=>`<h1>${x}</h1>`)}
+        </div>
+    )
+}
